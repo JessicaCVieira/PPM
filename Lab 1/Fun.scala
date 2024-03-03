@@ -59,15 +59,7 @@ object Fun {
 
   def ex3c(list: List[Int]): (List[Int], Int) = (list, list.length)
 
-  //rever
-  def ex3d(list: List[Double]): Double = {
-    def sumHelper(list: List[Double], acc: Double): Double = {
-      if(list.isEmpty) acc
-      else sumHelper(list.tail, acc + list.head)
-    }
-    val sum = sumHelper(list, 0.0)
-    if (list.isEmpty) 0 else sum / list.length
-  }
-
-
 }
+
+//3 d)
+def average(lst: List[Double]): Double = lst.sum / lst.length; 
