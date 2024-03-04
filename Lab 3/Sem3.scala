@@ -113,7 +113,7 @@ def zipWith2[A, B, C](op: (A, B) => C, a: List[A], b: List[B]) : List[C] =
             case Nil => Nil
             case x :: xs => op(x, b.head) :: zipWith2(op, xs, b.tail)
         }
-}*/
+}
 
 //c)
 def isSorted[A](lst: List[A], ordered: (A,A) => Boolean): Boolean = 
@@ -124,3 +124,28 @@ def isSorted[A](lst: List[A], ordered: (A,A) => Boolean): Boolean =
         case head :: second :: tail => ordered(head,second) && isSorted(tail, ordered)
     }
 }
+
+//d)
+def bubbleSort(data: List[Int], f: (Int, Int) => Boolean): List[Int] = 
+{
+    def sort(lst: List[Int]) : List[Int] = 
+    {
+        lst match 
+        {
+            case Nil => Nil
+            case List(_) =>  lst
+            case head :: second :: tail => 
+                if (f(head, second)) head :: sort(second :: tail) 
+                else second :: sort(head :: tail)
+        }
+    }
+
+    def loop (lst: List[Int], n: Int) : List[Int] = 
+    {
+        if (n <= 0) lst
+        else loop(sort(lst), n - 1)        
+    }   
+
+    loop(data, data.length)
+}*/
+
