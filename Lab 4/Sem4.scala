@@ -10,7 +10,6 @@ def andFoldLeft(lst: List[Boolean]) : Boolean = (lst foldLeft true) (_ && _)*/
 
 
 //EX. 2 
-
 type Team = String 
 type Goals = Int 
 type Match = ((Team, Goals), (Team, Goals)) 
@@ -18,30 +17,29 @@ type Fixtures = List[Match]
 
 //test val
 val m = new Match (("Uk", 2), ("Uk", 1))
+val n = new Match (("Uk", 2), ("MU", 1))
+val f: Fixtures = List(
+  (("TeamA", 2), ("TeamB", 1)),
+  (("TeamA", 3), ("TeamD", 3)),
+  (("TeamE", 0), ("TeamF", 2))
+)
 
+//foldLeft
+// a)
+/*Retorna true se forem equipas diferentes
+  Retorna false se for a mesma equipa no mesmo jogo*/
+def noItselfL(f: Fixtures) : Boolean = 
+    (f foldLeft true) ((acc, matchTuple) => acc && matchTuple._1._1 != matchTuple._2._1)
+
+// b) 
+def withoutRepL(f: Fixtures) : Boolean = 
+{
+    (f foldLeft true) (())
+}
+
+//foldRight
 //a) 
-//returns false if a team plays with itself
-def noItself(m: Match) : Boolean = 
+/*def noItselfR(f: Fixtures) : Boolean = 
 {
-    return !((m._1)._1 == (m._2)._1)
-}
-
-//b) 
-//return false if a team plays more than 1 game
-/*def withoutRep(f: Fixtures) : Boolean = 
-{
-    f match{
-        case Nil => true
-        case 
-    }
+    
 }*/
-
-//c) 
-def teams(f: Fixtures) : List[Team] = 
-{
-    f match{
-        case Nil => Nil
-        case head => (head.head._1._1) :: (head.head._2._1)
-        case head :: tail => (head._1._1) :: (head._1._2) :: teams(tail)
-    }
-}
