@@ -31,7 +31,7 @@ def transf[A](lst: List[A]):List[A] =
 def prod (lst: List[Double]) : Double = 
 {
     lst match {
-        case Nil => 0
+        case Nil => 1
         case List(e) => e
         case head :: tail => head * prod(tail)
     }
@@ -45,6 +45,12 @@ def add[A](l: List[A], e: A) : List[A] =
         case _ => l :+ e                      // -> x :: xs - x primeiro e depois xs -> x :+ s - adiciona s no fim
     }
 }
+
+/*
+++: concatena duas coleções.
+:+: adiciona um único elemento ao final de uma coleção.
+::: adiciona um elemento à frente de uma lista.
+*/
 
 //1 d)
 def concat[Any](a: List[Any], b: List[Any]) : List[Any] = 
@@ -83,7 +89,6 @@ def helper1f (lst: List[Double]): (Double, Double) =
 }
 //ii.
 def average(lst: List[Double]) : Double = helper1f(lst)._1 / helper1f(lst)._2
-
 
 //we can use val cannot use var
 

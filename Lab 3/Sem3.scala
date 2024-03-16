@@ -121,7 +121,7 @@ def isSorted[A](lst: List[A], ordered: (A,A) => Boolean): Boolean =
     lst match {
         case Nil => true // the teacher does not especify what to do in this case
         case List(_) => true // the teacher does not especify what to do in this case
-        case head :: second :: tail => ordered(head,second) && isSorted(tail, ordered)
+        case head :: second :: tail => ordered(head,second) && isSorted(second :: tail, ordered)
     }
 }
 
