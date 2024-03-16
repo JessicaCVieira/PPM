@@ -24,6 +24,9 @@ val f: Fixtures = List(
   (("TeamE", 0), ("TeamF", 2))
 )
 
+//a) 
+def same(m: Match) : Boolean = m._1._1.equals(m._2._1)
+
 //foldLeft
 // a)
 /*Retorna true se forem equipas diferentes
